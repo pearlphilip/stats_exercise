@@ -24,15 +24,28 @@ bostonDF['MEDV'] = boston.target
 #print(bostonDF.head())
 
 # run fit
-results = smf.ols('MEDV ~ LSTAT', data=bostonDF).fit()
+results = smf.ols('MEDV ~ LSTAT + AGE', data=bostonDF).fit()
 print(results.summary())
 
+'''
 # plot
 #plt.plot()
 with PdfPages(PDF) as pdf:
-    fig = abline_plot(model_results=results)
+    fig = abline_plot(intercept=results.params['Intercept'],
+                        slope=results.params['LSTAT'])
     ax = fig.axes[0]
     ax.scatter(bostonDF['LSTAT'], bostonDF['MEDV'])
+    #plt.title('MEDV vs. LSTAT + AGE (LSTAT only)')
     ax.margins(.1)
     pdf.savefig()
     plt.close()
+
+    fig = abline_plot(intercept=results.params['Intercept'],
+                        slope=results.params['AGE'])
+    ax = fig.axes[0]
+    ax.scatter(bostonDF['AGE'], bostonDF['MEDV'])
+    ax.margins(.1)
+    #plt.title('MEDV vs LSTAT + AGE (AGE only)')
+    pdf.savefig()
+    plt.close()
+'''
