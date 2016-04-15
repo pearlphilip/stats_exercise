@@ -24,7 +24,20 @@ bostonDF['MEDV'] = boston.target
 #print(bostonDF.head())
 
 # run fit
-results = smf.ols('MEDV ~ LSTAT + AGE', data=bostonDF).fit()
+# our test to see how linked NOX and INDUS were
+# this test showed some increase in INDUS relevance
+# when NOX was dropped
+#bostonDF.drop('NOX', axis=1, inplace=True)
+# test to see how modifying the scale of an input
+# impacts the final coeffecient
+#print(bostonDF['CRIM'])
+#bostonDF['CRIM'] /= 100000
+cols = bostonDF.columns[:-1]
+formula = 'MEDV ~ ' + cols[0]
+for col in cols[1:]:
+    formula = formula + ' + ' + col
+print(formula)
+results = smf.ols(formula, data=bostonDF).fit()
 print(results.summary())
 
 '''
