@@ -1,0 +1,25 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   MEDV   R-squared:                       0.544
+Model:                            OLS   Adj. R-squared:                  0.543
+Method:                 Least Squares   F-statistic:                     601.6
+Date:                Fri, 15 Apr 2016   Prob (F-statistic):           5.08e-88
+Time:                        13:17:22   Log-Likelihood:                -1641.5
+No. Observations:                 506   AIC:                             3287.
+Df Residuals:                     504   BIC:                             3295.
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+Intercept     34.5538      0.563     61.415      0.000        33.448    35.659
+LSTAT         -0.9500      0.039    -24.528      0.000        -1.026    -0.874
+==============================================================================
+Omnibus:                      137.043   Durbin-Watson:                   0.892
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              291.373
+Skew:                           1.453   Prob(JB):                     5.36e-64
+Kurtosis:                       5.319   Cond. No.                         29.7
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
